@@ -119,6 +119,10 @@ class Experiment_LoaderTest extends WP_UnitTestCase {
 			$this->registry->has_experiment( 'excerpt-generation' ),
 			'Excerpt generation experiment should be registered'
 		);
+		$this->assertTrue(
+			$this->registry->has_experiment( 'writing-assistant' ),
+			'Writing assistant experiment should be registered'
+		);
 
 		$title_experiment = $this->registry->get_experiment( 'title-generation' );
 		$this->assertNotNull( $title_experiment, 'Title generation experiment should exist' );
@@ -131,6 +135,10 @@ class Experiment_LoaderTest extends WP_UnitTestCase {
 		$experiment = $this->registry->get_experiment( 'excerpt-generation' );
 		$this->assertNotNull( $experiment, 'Excerpt generation experiment should exist' );
 		$this->assertEquals( 'excerpt-generation', $experiment->get_id() );
+
+		$experiment = $this->registry->get_experiment( 'writing-assistant' );
+		$this->assertNotNull( $experiment, 'Writing assistant experiment should exist' );
+		$this->assertEquals( 'writing-assistant', $experiment->get_id() );
 	}
 
 	/**
